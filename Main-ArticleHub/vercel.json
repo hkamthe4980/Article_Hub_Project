@@ -1,5 +1,13 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index1.html" }
+  "version": 2,
+  "builds": [
+    
+    { "src": "dist/Main-ArticleHub/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index1.html"
+    }
   ]
 }
