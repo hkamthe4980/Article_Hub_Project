@@ -1,0 +1,7 @@
+<div mat-dialog-content>
+    Your content here...
+  </div>
+  <div mat-dialog-actions >
+    <button mat-raised-button [color]="themeService.getTheme()"(click)="handleChangeAction()">Yes</button>
+    <button mat-raised-button [color]="themeService.getTheme()" mat-dialog-close>No</button>
+</div>

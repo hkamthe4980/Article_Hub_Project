@@ -1,0 +1,61 @@
+<mat-toolbar [color]="themeService.getTheme()">
+    <mat-toolbar-row fxLayout="row">
+        <span class="title-center">
+            {{dialogData.action}} User
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content>
+    <form [formGroup]="usersForm">
+        <div fxFlex fxLayout="column">
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="fill" fxFlex="1" [color]="themeService.getTheme()">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" required>
+                    <mat-error *ngIf="usersForm.controls['name'].touched && usersForm.controls['name'].invalid">
+                        <span *ngIf="usersForm.controls['name'].errors?.['required']">This Field Is Required</span>
+                        <span *ngIf="usersForm.controls['name'].errors?.['pattern']">This Field Is invalid</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row wrap">
+                <mat-form-field appearance="fill" fxFlex [color]="themeService.getTheme()">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required>
+                    <mat-error *ngIf="usersForm.controls['email'].touched && usersForm.controls['email'].invalid">
+                        <span *ngIf="usersForm.controls['email'].errors?.['required']">This Field Is Required</span>
+                        <span *ngIf="usersForm.controls['email'].errors?.['pattern']">This Field Is invalid</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="dialogData.action === 'Add'">
+                <div fxLayout="row wrap">
+                    <mat-form-field appearance="fill" fxFlex [color]="themeService.getTheme()">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" formControlName="password" required>
+
+
+                        <mat-error *ngIf="usersForm.controls['password'].touched && usersForm.controls['password'].invalid">
+                            <span *ngIf="usersForm.controls['password'].errors?.['required']">This Field Is Required</span>
+                            <span *ngIf="usersForm.controls['password'].errors?.['pattern']">This Field Is invalid</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <button mat-raised-button [color]="themeService.getTheme()" type="button"
+        (click)="handleSubmit()" [disabled]="!usersForm.valid">
+        {{ action }}
+    </button>
+    <button mat-raised-button [color]="themeService.getTheme()" mat-dialog-close type="button">
+        Close
+    </button>
+</mat-dialog-actions>
+
