@@ -3,7 +3,7 @@ var cors = require('cors');//Allows requests from different origins (useful for 
 
 const connection = require('./connection');
 const appuserRoute = require('./Routes/appuser')
-const categoryRoutes = require('./routes/category')
+const categoryRoutes = require('./Routes/category')
 
 const articleRoute = require('./Routes/article')
 
